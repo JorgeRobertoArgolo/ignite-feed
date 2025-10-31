@@ -41,6 +41,8 @@ export function Post ({
         setComments(commentsWithoutDeletedOne);
     }
 
+    const inNewCommentInputEmpty = newCommentText.length === 0;
+
     return (
         <article className={styles.post}>
             <header>
@@ -79,10 +81,16 @@ export function Post ({
                     value={newCommentText}
                     onChange={handleNewCommentChange}
                     placeholder='Deixe um comentário'
+                    required
                 />
                 
                 <footer>
-                    <button type="submit">Comentário</button>
+                    <button 
+                        type="submit"
+                        disabled={inNewCommentInputEmpty}
+                    >
+                        Publicar
+                    </button>
                 </footer>
             </form>
 
